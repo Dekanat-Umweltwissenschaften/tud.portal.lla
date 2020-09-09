@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<registry>
+	<!-- List all resources here -->
+	<records prefix="plone.resources/tud-portal-lla"
+	         interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+		<value key="js">++theme++tud.portal.lla/javascript/script.js</value>
+	    <value key="css">
+	      <element>++theme++tud.portal.lla/styles/styles.less</element>
+	    </value>
+	</records>
+
+  <records prefix="plone.resources/tud-portal-lla-doubletabtogo"
+	         interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+		<value key="js">++theme++tud.portal.lla/javascript/libs/doubletabtogo/jquery.dcd.doubletaptogo.min.js</value>
+	</records>
+
+	<!-- List all bundles -->
+	<records prefix="plone.bundles/tud-portal-lla"
+             interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+      <!--value key="merge_with">default</value-->
+	  <value key="resources">
+      <element>tud-portal-lla-doubletabtogo</element>
+      <element>tud-portal-lla</element>
+	  </value>
+	  <value key="enabled">True</value>
+	  <value key="compile">True</value>
+	  <value key="jscompilation"></value>
+	  <value key="csscompilation">++theme++tud.portal.lla/compiled.css</value>
+	  <value key="last_compilation">2014-08-14 00:00:00</value>
+	</records>
+
+  <!-- Language settings -->
+  <records interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" prefix="plone">
+    <value key="default_language">en</value>
+    <value key="available_languages">
+      <element>en</element>
+      <element>de</element>
+      <element>cs</element>
+      <element>lv</element>
+    </value>
+    <value key="always_show_selector">True</value>
+    <value key="use_content_negotiation">False</value>
+  </records>
+
+  <!-- TinyMCE settings -->
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" prefix="plone">
+    <value key="custom_plugins">
+        <element>template|+plone+static/components/tinymce-builded/js/tinymce/plugins/template</element>
+    </value>
+    <value key="templates">
+[
+    {"title": "Akkordeon", "url": "++resource++tud.portal.lla/tinymce_templates/accordion.html"}
+]
+    </value>
+  </records>
+
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" prefix="plone">
+    <value key="site_title">Life Local Adapt</value>
+    <value key="webstats_js"><![CDATA[<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setCookieDomain", "*.life-local-adapt.eu"]);
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.mz.tu-dresden.de/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "20"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->]]></value>
+  </records>
+
+  <records interface="tud.portal.lla.interfaces.INewsletterSettings">
+    <value key="mailing_list_address">mailmanlist-request@groups.tu-dresden.de</value>
+  </records>
+
+  <records interface="Products.CMFPlone.interfaces.ITypesSchema" prefix="plone">
+    <value key="default_page_types">
+      <element>Document</element>
+      <element>Event</element>
+      <element>News Item</element>
+      <element>TilePage</element>
+    </value>
+  </records>
+
+</registry>
+

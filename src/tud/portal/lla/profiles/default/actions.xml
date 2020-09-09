@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <object name="footer_actions" meta_type="CMF Action Category">
+  <object name="login" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Log in</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${globals_view/navigationRootUrl}/login</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:member is None</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+   <property name="modal"
+      type="text">{"prependContent": ".portalMessage", "title": "Log in", "width": "26em"}</property>
+  </object>
+  <object name="logout" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Log out</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${globals_view/navigationRootUrl}/logout</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:member is not None</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="newsletter" meta_type="CMF Action" i18n:domain="tud.portal.lla">
+   <property name="title" i18n:translate="">Newsletter</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${globals_view/navigationRootUrl}/newsletter</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+   <property name="modal"
+      type="text">{"prependContent": ".portalMessage", "title": "Log in", "width": "26em"}</property>
+  </object>
+  <object name="sharepoint" meta_type="CMF Action" i18n:domain="tud.portal.lla">
+   <property name="title" i18n:translate="">Sharepoint</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:https://sharepoint.tu-dresden.de/sites/zuv/d5/life</property>
+   <property name="link_target">_blank</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:member is not None</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="site-feed" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">RSS feed</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${globals_view/navigationRootUrl}/site-feed/RSS</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="imprint" meta_type="CMF Action" i18n:domain="tud.portal.lla">
+   <property name="title" i18n:translate="">About this website</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${globals_view/navigationRootUrl}/about-this-website</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="contact" meta_type="CMF Action" i18n:domain="tud.portal.lla">
+   <property name="title" i18n:translate="">Contact</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">context/@@contact-link</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">context/@@contact-link</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+ </object>
+</object>

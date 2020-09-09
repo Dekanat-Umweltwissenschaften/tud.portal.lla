@@ -1,0 +1,188 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-07-06 15:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../browser/templates/mirror_content.pt:16
+msgid "${note} This content has been already translated to the following languages: ${language_links}"
+msgstr "${note} Dieser Inhalt wurde bereits für folgende Sprache übersetzt: ${language_links}"
+
+#: ../profiles/default/actions.xml
+msgid "About this website"
+msgstr "Impressum"
+
+#: ../browser/mirror_content.py:71
+msgid "Choose the languages you wish to translate this content object."
+msgstr "Wähle Sie die Sprachen aus, in die dieses Inhaltsobjekt übersetzt werden soll."
+
+#: ../profiles/default/actions.xml
+msgid "Contact"
+msgstr "Kontakt"
+
+#: ../browser/mirror_content.py:78
+msgid "If checked, copied contents will also have the same state of the original content. Otherwise, it will be in the initial state (e.g. private)."
+msgstr "Falls markiert, werden kopierte Inhalte in denselben Zustand wie das Original versetzt. Ansonsten wird der Inhalt in den initialen Zustand versetzt (z.B. privat)."
+
+#: ../browser/mirror_content.py:77
+msgid "Keep workflow states?"
+msgstr "Behalte Workflow-Zustände?"
+
+#: ../browser/mirror_content.py:70
+msgid "Languages"
+msgstr "Sprachen"
+
+#: ../profiles/default/actions.xml
+msgid "Newsletter"
+msgstr ""
+
+#: ../profiles/default/controlpanel.xml
+msgid "Newsletter Settings"
+msgstr ""
+
+#: ../browser/templates/mirror_content.pt:15
+msgid "Note:"
+msgstr "Hinweis:"
+
+#: ../profiles/default/actions.xml
+msgid "Sharepoint"
+msgstr ""
+
+#: ../browser/newsletter.py:97
+msgid "Unable to send mail: ${exception}"
+msgstr ""
+
+#. Default: "Address"
+#: ../browser/templates/contact.pt:79
+msgid "address"
+msgstr "Adresse"
+
+#. Default: "Mirror content"
+#: ../browser/mirror_content.py:104
+msgid "button_mirror_content"
+msgstr "Inhalte spiegeln"
+
+#. Default: "Newsletter-relevant settings."
+#: ../browser/newsletter_control_panel.py:10
+msgid "control_panel_newsletter_desc"
+msgstr ""
+
+#. Default: "Newsletter"
+#: ../browser/newsletter_control_panel.py:9
+msgid "control_panel_newsletter_label"
+msgstr ""
+
+#: ../browser/menu.py:33
+msgid "description_mirror_content"
+msgstr ""
+
+#. Default: "Email"
+#: ../browser/templates/contact.pt:57
+msgid "email"
+msgstr "E-Mail"
+
+#. Default: "Environment LIFE Programme Logo"
+#: ../browser/templates/footer_viewlet.pt:20
+msgid "footer_life_logo_alt"
+msgstr ""
+
+#. Default: "This Project is funded by the European Union in the LIFE Programme."
+#: ../browser/templates/footer_viewlet.pt:22
+msgid "footer_life_text"
+msgstr "Das Projekt wird durch das EU-Umweltprogramm LIFE gefördert."
+
+#. Default: "More information"
+#: ../browser/templates/privacy_staement_viewlet.pt:12
+msgid "imprintLink"
+msgstr "Mehr Informationen"
+
+#. Default: "Mailing list address"
+#: ../interfaces.py:22
+msgid "mailing_list_address"
+msgstr ""
+
+#. Default: "When the mailing list address is mylist@groups.tu-dresden.de, this entry should be mylist-request@groups.tu-dresden.de. This only works for mailman as system."
+#: ../interfaces.py:23
+msgid "mailing_list_address_description"
+msgstr ""
+
+#. Default: "With this form you can replicate the current object and its children from this language folder into another language folders. You still have to make sure, that the container path is present in the destination location."
+#: ../browser/mirror_content.py:91
+msgid "mirror_content_form_description"
+msgstr "Mit diesem Formular können Sie das aktuelle Objekt und dessen Kinder von diesem Sprachordner in einen anderen Sprachordner replizieren. Sie müssen allerdings sicherstellen, dass der Container-Pfad im Ziel-Ort vorhanden ist."
+
+#. Default: "Mirror this object to other languages."
+#: ../browser/mirror_content.py:89
+msgid "mirror_content_form_label"
+msgstr "Dieses Objekt in andere Sprachen spiegeln."
+
+#. Default: "Your email address"
+#: ../browser/newsletter.py:26
+msgid "newsletter_email_address"
+msgstr ""
+
+#. Default: "Please enter your email address to (un-)subscribe to LLA-Newsletter."
+#: ../browser/newsletter.py:37
+msgid "newsletter_form_description"
+msgstr ""
+
+#. Default: "Newsletter"
+#: ../browser/newsletter.py:35
+msgid "newsletter_form_label"
+msgstr ""
+
+#. Default: "Subscribe"
+#: ../browser/newsletter.py:46
+msgid "newsletter_subscribe"
+msgstr ""
+
+#. Default: "Unsubscribe"
+#: ../browser/newsletter.py:60
+msgid "newsletter_unsubscribe"
+msgstr ""
+
+#. Default: "Phone"
+#: ../browser/templates/contact.pt:68
+msgid "phone"
+msgstr "Telefon"
+
+#. Default: "Our website uses cookies and the analytics software Piwik."
+#: ../browser/templates/privacy_staement_viewlet.pt:11
+msgid "privacy_statement_text"
+msgstr "Unsere Webseite nutzt Cookies und die Analysesoftware Piwik."
+
+#. Default: "A request for subscribing the newsletter has been sent. Please check your emails to confirm this action."
+#: ../browser/newsletter.py:55
+msgid "status_message_newsletter_subscribed"
+msgstr ""
+
+#. Default: "A request for unsubscribing the newsletter has been sent. Please check your emails to confirm this action."
+#: ../browser/newsletter.py:69
+msgid "status_message_newsletter_unsubscribed"
+msgstr ""
+
+#. Default: "Did not find container ${path}."
+#: ../browser/mirror_content.py:129
+msgid "status_mirror_content_not_found"
+msgstr "Container nicht gefunden: ${path}"
+
+#. Default: "Contents successfully mirrored for ${languages}."
+#: ../browser/mirror_content.py:143
+msgid "status_mirror_content_success"
+msgstr "Inhalte erfolgreich für folgende Sprache gespiegelt: ${languages}"
+
+#. Default: "Mirror this object to other languages"
+#: ../browser/menu.py:29
+msgid "title_mirror_content"
+msgstr "Dieses Objekt in andere Sprachen spiegeln."
+

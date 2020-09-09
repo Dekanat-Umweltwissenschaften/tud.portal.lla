@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<object>
+  <order manager="plone.mainnavigation" skinname="Plone Default">
+    <viewlet name="tud.portal.lla.global_sections" />
+    <viewlet name="plone.global_sections" />
+  </order>
+  <order manager="plone.portalfooter" skinname="Plone Default">
+    <!-- Put footer above all others -->
+    <viewlet name="tud.portal.lla.footer"/>
+    <viewlet name="plone.footer"/>
+    <viewlet name="plone.colophon"/>
+    <viewlet name="plone.site_actions"/>
+    <viewlet name="tud.portal.lla.privacy_staement_viewlet" />
+  </order>
+  <border manage="plone.belowcontent" skinname="Plone Default">
+    <viewlet name="tud.portal.lla.piwik_viewlet" />
+  </border>
+  <hidden manager="plone.portalfooter" skinname="Plone Default">
+    <viewlet name="plone.footer"/>
+    <viewlet name="plone.colophon"/>
+    <viewlet name="plone.site_actions"/>
+  </hidden>
+  <hidden manager="plone.mainnavigation" skinname="Plone Default">
+    <viewlet name="plone.global_sections"/>
+  </hidden>
+</object>

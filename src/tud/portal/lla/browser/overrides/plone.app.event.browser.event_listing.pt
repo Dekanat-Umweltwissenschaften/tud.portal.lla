@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.event">
+<body>
+
+<metal:content-core fill-slot="main">
+<metal:block define-macro="main">
+    <tal:def define="batch view/events;
+        toLocalizedTime nocall: context/@@plone/toLocalizedTime;">
+
+        <div tal:attributes="class string:main-tile tile quartz">
+            <div class="bg-image"
+                 tal:attributes="style string: background-image:url('${context/@@plone_portal_state/portal_url}/++theme++tud.portal.lla/img/calendar_bg.jpg');">
+            </div>
+
+            <div class="tile-content">
+                <div tal:replace="structure provider:plone.abovecontenttitle"></div>
+
+                <h1 class="documentFirstHeading">
+                    <span tal:replace="context/title">Title</span>
+                    <tal:filter tal:define="show_filter view/show_filter;
+                                            mode request/mode|string:future;"
+                        tal:condition="show_filter">
+                        (<span tal:condition="python:mode=='future'" i18n:translate="mode_future_link">Upcoming
+                    </span><span tal:condition="python:mode=='past'" i18n:translate="mode_past_link">Past</span>)
+                    </tal:filter>
+                </h1>
+
+                <div tal:replace="structure provider:plone.belowcontenttitle"></div>
+
+                <p tal:condition="context/description" class="documentDescription" tal:content="context/description" />
+
+                <a class="mode_ical"  href="" tal:attributes="href view/ical_url"
+                    title="Download this event in iCal format"
+                    i18n:attributes="title title_add_to_ical;">
+                <span i18n:translate="label_add_to_ical">iCal</span></a>
+            </div>
+        </div>
+
+        <section>
+
+            <tal:rows define="length batch/items_on_page;"
+                repeat="event_row_first python: range(0, length, 3)">
+
+                <div class="row tiles">
+
+                    <tal:events repeat="event_index python: range(event_row_first, min(event_row_first+3, length))">
+
+                        <div class='col-sm-4' tal:define="data python: batch[event_index]">
+                            <div class="vevent tile quartz" itemscope itemtype="http://data-vocabulary.org/Event"
+                                tal:define="startf python:view.date_speller(data.start)">
+
+                                <ul class="hiddenStructure">
+                                    <li itemprop="startDate" class="dtstart" tal:content="data/start/isoformat">end</li>
+                                    <li itemprop="endDate" class="dtend" tal:content="data/end/isoformat">end</li>
+                                </ul>
+
+                                <a href="" itemprop="url" class="url" tal:attributes="href data/url">
+                                    <div class="event-date">
+                                        <div class="month year">
+                                          <tal:month tal:content="string:${startf/month_name}">Oct.</tal:month>
+                                          <tal:year tal:content="python:startf['year']">2018</tal:year>
+                                        </div>
+                                        <span class="day" tal:content="string:${startf/day}">15</span>
+                                        <span class="wkday" tal:content="python:startf['wkday_name']">Tue</span>
+                                    </div>
+                                    <div class="tile-content">
+                                        <h2 itemprop="summary" class="summary" tal:content="data/title">Title</h2>
+                                        <div itemprop="location" class="location"
+                                            tal:condition="data/location"
+                                            tal:content="data/location">location</div>
+                                    </div>
+                                </a>
+
+                                <a class="event_ical"
+                                    tal:define="portal_url context/@@plone_portal_state/portal_url;"
+                                    tal:attributes="href string:${data/url}/ics_view"
+                                    title="Download this event in iCal format"
+                                    i18n:attributes="title title_add_to_ical;">
+                                    <span i18n:translate="label_add_to_ical">iCal</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </tal:events>
+                </div>
+            </tal:rows>
+
+
+        </section>
+
+  <div metal:use-macro="context/batch_macros/macros/navigation" />
+
+</tal:def>
+</metal:block>
+</metal:content-core>
+
+</body>
+</html>

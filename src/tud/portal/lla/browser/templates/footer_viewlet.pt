@@ -1,0 +1,26 @@
+<html tal:omit-tag=""
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="tud.portal.lla">
+<body tal:omit-tag="">
+    <ul id="footer-actions">
+        <li tal:repeat="action view/footer_actions"
+                tal:attributes="id string:footer-action-${action/id}">
+            <a href=""
+                    tal:attributes="href action/href"
+                    tal:content="action/title">
+                action title
+            </a>
+        </li>
+    </ul>
+
+    <div id="footer-copyright">
+        <div><a href="https://tu-dresden.de/mz" target="_blank">&copy; TUD, 2016</a></div>
+        <div class="life-url">
+            <a class="life_logo" href="http://ec.europa.eu/environment/life/" target="_blank" class="nohover">
+                <img src="life.png" tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++theme++tud.portal.lla/img/life.png" i18n:attributes="alt footer_life_logo_alt" alt="Environment LIFE Programme Logo"/>
+            </a>
+            <div i18n:translate="footer_life_text">This Project is funded by the European Union in the LIFE Programme.</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="tud.portal.lla">
+
+    <tal:block tal:define="imprintUrl view/getImprintUrl">
+        <div id="privacy-statement" tal:condition="imprintUrl">
+            <div class="container">
+                <div class="row col-xs-12 col-sm-12">
+                    <a class="close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                    <div i18n:translate="privacy_statement_text">Our website uses cookies and the analytics software Piwik.</div>
+                    <a class="imprintLink"
+                       tal:attributes="href imprintUrl"
+                       i18n:translate="imprintLink">More information</a>
+                </div>
+            </div>
+        </div>
+    </tal:block>
+
+</html>
+
+

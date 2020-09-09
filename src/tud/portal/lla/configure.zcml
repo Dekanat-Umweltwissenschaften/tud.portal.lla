@@ -1,0 +1,46 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="tud.portal.lla">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <includeDependencies package="." />
+
+  <include package=".browser" />
+
+  <plone:static
+      directory="theme"
+      type="theme"
+      name="tud.portal.lla"
+      />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="tud.portal.lla"
+      directory="profiles/default"
+      description="Installs the tud.portal.lla add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="tud.portal.lla (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the tud.portal.lla add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="tud.portal.lla-hiddenprofiles" />
+
+  <browser:resourceDirectory name="tud.portal.lla"
+                             directory="static"/>
+
+</configure>

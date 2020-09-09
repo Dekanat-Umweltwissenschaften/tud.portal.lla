@@ -1,0 +1,64 @@
+<model xmlns:form="http://namespaces.plone.org/supermodel/form"
+       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+       xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
+       xmlns:marshal="http://namespaces.plone.org/supermodel/marshal"
+       xmlns:security="http://namespaces.plone.org/supermodel/security"
+       xmlns:users="http://namespaces.plone.org/supermodel/users"
+       xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="image" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
+      <description/>
+      <required>False</required>
+      <title>Image</title>
+    </field>
+    <field name="image_copyright" type="zope.schema.TextLine" lingua:independent="true">
+      <description/>
+      <required>False</required>
+      <title>Copyright information for the image</title>
+    </field>
+    <field name="tileimage" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
+      <description>The main image is used when no image is selected here</description>
+      <required>False</required>
+      <title>Image for tile (preview) representation</title>
+    </field>
+    <field name="tileimage_copyright" type="zope.schema.TextLine" lingua:independent="true">
+      <description/>
+      <required>False</required>
+      <title>Copyright information for the tile image</title>
+    </field>
+    <field name="color" type="zope.schema.Choice" lingua:independent="true">
+      <description/>
+      <required>False</required>
+      <title>Color</title>
+      <values>
+        <element>Red</element>
+        <element>Green</element>
+        <element>Black</element>
+        <element>Azureish-white</element>
+        <element>Space-cadet</element>
+        <element>Blue</element>
+        <element>life-blue</element>
+        <element>Deep-space-sparkle</element>
+        <element>Cyan-cornflower-blue</element>
+        <element>Dark-sea-green</element>
+        <element>Jungle-green</element>
+        <element>Middle-red</element>
+        <element>Light-salmon-pink</element>
+        <element>Pumpkin</element>
+        <element>Buff</element>
+        <element>Yellow-crayola</element>
+        <element>June-bud</element>
+        <element>Black-shadows</element>
+        <element>Charleston-green</element>
+        <element>Quartz</element>
+        <element>Nickel</element>
+        <element>Silver</element>
+        <element>Violet</element>
+        <element>Shampoo</element>
+        <element>English-Red</element>
+        <element>Persian-Red</element>
+        <element>Dark-Candy-Apple-Red</element>
+      </values>
+    </field>
+  </schema>
+</model>

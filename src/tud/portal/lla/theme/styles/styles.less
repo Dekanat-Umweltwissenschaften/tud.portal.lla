@@ -1,0 +1,653 @@
+/* Import Barceloneta styles */
+@import "++theme++barceloneta/less/barceloneta.plone.less";
+
+
+@lla-red: #DD0019;
+
+
+/* Customize whatever you want */
+
+@plone-body-bg: white;
+
+@plone-sitenav-bg: rgba(0,0,0,0);
+@plone-sitenav-link-hover-bg: rgba(0,0,0,0);
+
+@plone-breadcrumb-bg: white;
+
+@plone-headings-color: @lla-logo-color;
+
+@plone-link-color: @lla-red;
+@plone-link-color-on-dark: #75787F;
+@plone-link-color-on-grey: @lla-red;
+
+@plone-pagination-color:                     @lla-red;
+	@plone-pagination-active-bg:                 @lla-red;
+	@plone-pagination-active-border:             @plone-border-base @lla-red;
+
+@plone-border-radius-base: 0;
+@plone-border-radius-large: 0;
+@plone-border-radius-small: 0;
+
+@fix-link-color: @lla-red;
+@lla-logo-color: #8BC647;
+
+@plone-footer-bg: #090809;
+@lla-footer-header-color: #689ca6;
+@lla-footer-text-color: #75787F;
+
+
+@img-path: "/++theme++tud.portal.lla/img";
+
+
+#portal-header {
+    position: relative;
+}
+
+#portal-logo {
+
+    @media (min-width: @plone-screen-sm-min) {
+        max-width: calc(~"100% - 60px");
+        img {
+            max-width: 100%;
+            width: 450px;
+        }
+    }
+
+    @media (max-width: @plone-screen-sm-min) {
+        width: 161px;
+        height: 75px;
+        background-image: url("@{img-path}/life_chameleon.gif");
+        background-repeat: no-repeat;
+        background-size: contain;
+        img {
+            display: none;
+        }
+    }
+}
+
+#portal-languageselector {
+    margin: 0;
+    padding: 0;
+    float: right;
+    list-style-type: none;
+    top: 66px;
+    position: absolute;
+    right: 10px;
+
+    z-index: 1;
+    border: 1px solid rgba(0,0,0,0);
+
+    &.open {
+        background-color: white;
+        border-color: rgba(0, 0, 0, 0.17);
+    }
+
+    > li.arrow {
+        display: block;
+        position: absolute;
+        top: -22px;
+        right: 0;
+        margin: 0;
+        pointer-events: none;
+        &::before {
+            color: grey;
+        }
+    }
+
+    @media (max-width: @plone-screen-sm-min) {
+        right: 65px;
+    }
+    & > li {
+        display: block;
+        &:not(.currentLanguage):not(.arrow) {
+            display: none;
+            margin: 0;
+
+            a {
+                display: block;
+                padding: 4px 8px;
+            }
+        }
+
+        &.currentLanguage {
+            cursor: pointer;
+            position: absolute;
+            top: -25px;
+            right: 0;
+            margin-right: 0;
+            width: 50px;
+            height: 20px;
+            display: block;
+            background-repeat: no-repeat;
+            &.language-de {
+                background-image: url("@{img-path}/flags/de.gif");
+            }
+            &.language-en {
+                background-image: url("@{img-path}/flags/en.gif");
+            }
+            &.language-cs {
+                background-image: url("@{img-path}/flags/cs.gif");
+            }
+            &.language-lv {
+                background-image: url("@{img-path}/flags/lv.gif");
+            }
+
+            & > a {
+                .sr-only;
+            }
+        }
+
+    }
+}
+
+#mainnavigation-wrapper {
+    
+    .plone-navbar-toggle {
+        background-color: black;
+        border: none;
+        border-radius: unset;
+        width: 45px;
+        height: 45px;
+        
+        .icon-bar::after {
+            content: "";
+            position: relative;
+            color: white;
+            width: 2.5rem;
+            height: 0.2rem;
+            display: block;
+            background-color: white;
+            margin: 0.5rem 0;
+        }
+
+        &[aria-expanded="true"] {
+            &::after {
+                content: "\2A2F";
+                color: white;
+                font-size: 35px;
+                font-weight: 100;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .icon-bar {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: @plone-screen-sm-min) {
+        margin-top: -55px;
+
+        .plone-navbar-toggle {
+            margin-top: -2%;
+            margin-bottom: 3%;
+        }
+    }
+    
+    #portal-globalnav-collapse {
+        border-top: 2px solid @plone-gray-lighter;
+        overflow-y: hidden;
+    }
+    
+    .plone-navbar {
+        box-shadow: none;
+    }
+    
+    ul.plone-nav {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        > li {
+            &.selected > a {
+                &,
+                &:focus {
+                  color: @lla-logo-color;
+                }
+            }
+        }
+
+        li {
+            .submenu-toggle {
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: grey;
+                border: none;
+                border-left: 1px solid #cccccc;
+                width: 5rem;
+
+                @media (min-width: @plone-screen-sm-min) {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    margin: -1px;
+                    padding: 0;
+                    overflow: hidden;
+                    clip: rect(0,0,0,0);
+                }
+            }
+
+            > a {
+                color: black;
+            }
+
+            ul {
+                display: none;
+                padding: 0;
+                list-style-type: none;
+            }
+
+            ul.open {
+                display: block;
+            }
+
+            @media (min-width: @plone-screen-sm-min) {
+                &:hover ul {
+                    display: block;
+                }
+
+                > ul {
+                    position: absolute;
+                    background-color: #8bc647;
+                    z-index: 1;
+                    margin-top: -5px;
+                    min-width: 14rem;
+                    right: 50%;
+                    transform: translateX(50%);
+
+                    a {
+                        color: white;
+                        padding: 5px 15px;
+                        display: block;
+                    }
+
+                    li.selected > a {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+        &#portal-globalnav-extra {
+            display: none;
+        }
+
+        @media (min-width: @plone-screen-sm-min) {
+            > li:hover > a {
+                .borderUnderline;
+            }
+        }
+
+        @media (max-width: @plone-screen-sm-min) {
+            background-color: @plone-footer-bg;
+
+            > li:not(:first-child) {
+                border-top: 1px solid @plone-gray-lighter;
+            }
+            li {
+                > a {
+                    color: #FFFFFF;
+                    margin-right: 5rem;
+                    padding: 0 extract(@plone-sitenav-link-padding, 2) 0 extract(@plone-sitenav-link-padding, 2);
+                    line-height: 4rem;
+                    display: block;
+                }
+                &.selected > a {
+                    color: @lla-logo-color;
+                }
+            }
+
+            &#portal-globalnav {
+                margin-bottom: 0;
+                border-bottom: 1px solid @plone-gray-lighter;
+            }
+            &#portal-globalnav-extra {
+                display: block;
+                text-transform: uppercase;
+                > li {
+                    border: none;
+                    a {
+                        color: #BBDEF0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.documentFirstHeading {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+
+a {
+    color: @fix-link-color;
+
+    &, .tile & {
+        &.event_ical, &.mode_ical {
+            color: #c5c4d7;
+        }
+    }
+}
+
+#portal-breadcrumbs ol > li {
+    line-height: 2.4em;
+    
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        border-left: 5px solid;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        top: 50%;
+        left: auto;
+        padding: 0 !important;
+        transform: translateY(-50%);
+    }
+    
+    &:before {
+        color: @lla-footer-text-color;
+        right: 10px;
+    }
+    
+    &:after {
+        color: white;        
+        right: 11px;
+    }
+    
+    &:last-child {
+        &:before, &:after {
+            content: none;
+        }
+    }
+}
+
+.row.tiles {    
+    position: relative;
+
+    @media (min-width: @plone-screen-sm-min) {
+        padding-top: 30px;
+        overflow: hidden;
+
+        .tile {
+            padding-bottom: 200rem;
+            margin-bottom: -200rem;
+        }
+    }
+
+    @media (max-width: @plone-screen-sm-min) {
+        .tile {
+            margin-top: 15px;
+        }
+    }
+
+    .events-tile .tile-content > div {
+        margin-bottom: 0.75em;
+    }
+
+    .col-sm-4, .col-sm-8 {
+        position: static;
+    }
+}
+
+
+#content {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .plone-breadcrumb {
+        margin-top: 0;
+        margin-bottom: 3rem;
+        
+        .container {
+            padding: 0;
+            width: auto;
+        }
+    }
+    
+    .content-text {
+        h1, h2, h3, h4, h5, a, a:visited {
+            color: @lla-logo-color;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+#content-core a {
+    border-bottom: 0;
+}
+
+.pagination {
+    width: 100%;
+    text-align: center;
+    ul {
+        padding: 1em 0;
+        display: inline-block;
+    }
+}
+
+#portal-footer-wrapper {
+    text-align: left;
+    color: @lla-footer-text-color;
+    
+    h2 {
+        font-size: @plone-font-size-base;
+        color: @lla-footer-header-color;
+        margin-bottom: 2rem;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    a:not(.nohover):hover {
+        position: relative;
+        .borderUnderlineInline(@lla-logo-color, 2px, -1px);
+    }
+    
+    .right {
+        @media (min-width: @plone-screen-sm-min) {
+            text-align: right;
+        }
+        
+        @media (max-width: @plone-screen-sm-min) {
+            margin-top: 3rem;
+        }
+    }
+
+    .life_logo {
+        @media (min-width: @plone-screen-sm-min) {
+            float: right;
+            margin-left: 1em;
+        }
+    }
+
+    // remove https link icons in the footer
+    i.link-https::after {
+      content: "";
+    }
+
+    ul#footer-actions {
+        li:nth-child(odd) {
+            float: left;
+            clear: left;
+        }
+        li:nth-child(even) {
+            margin-left: 50%;
+        }
+    }
+}
+
+.carousel-indicators {
+    padding: 30px 0 0;
+    text-align: center;
+    li {
+        display: inline-block;
+        a {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin: 2px;
+            text-indent: -9999px;
+            cursor: pointer;
+            background-color: #000\9;
+            background-color: rgba(0,0,0,0);
+            border: 1px solid @plone-footer-bg;
+            border-radius: 10px;
+            
+            &:hover {
+                border: 1px solid @fix-link-color;
+            }
+        }
+        
+        &.active a {
+            background-color: @plone-footer-bg;
+        }
+    }
+}
+
+.plone-modal-dialog {
+    max-width: 100%;
+    
+    .plone-modal-content {
+        max-width: 100%;
+        
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.panel-group {
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 1.5em;
+    & > .panel-group {
+        border: none;
+    }
+    .panel {
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+    .panel-heading {
+        a {
+            position: relative;
+            display: block;
+            margin: 10px 0;
+            padding-right: 2em;
+            text-decoration: none;
+            &::after {
+                .triangle(down, 0.5em, rgba(0,0,0,0.2));
+                position: absolute;
+                right: 0.5em;
+                transform: translateY(-50%);
+                top: 50%;
+            }
+            &[aria-expanded='true']::after {
+                border: none;
+                .triangle(up, 0.5em, rgba(0,0,0,0.2));
+            }
+            #content-core & {
+                border-bottom: 0;
+            }
+            &:hover, &:active {
+                text-decoration: none;
+            }
+        }
+    }
+    .panel-collapse {
+        padding-top: 0.5em;
+        display: none;
+        &.in {
+            display: block;
+        }
+    }
+    .panel-body {
+        padding-bottom: 1em
+    }
+}
+
+.fakePlaceholer() {
+    home: @lla-red
+    project  #1B2F33
+    partners #2E294E
+    about life #F38D68
+    downloads #9E288E
+    links #134074
+}
+
+#piwik-iframe {
+    width: 100%;
+    margin: 0 -8px 48px;
+    border: none;
+}
+#privacy-statement {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #8bc647;
+    color: black;
+
+    .close {
+        float: right;
+        font-size: 2em;
+    }
+}
+
+
+// generate tile color: @name @color @font-color
+@colors:
+    red     @lla-red    white,
+    green   #8BC647     black,
+    black   #090809     white,
+
+    azureish-white          #cdedf6     black,
+    space-cadet             #2e294e     white,
+    blue                    #2e4057     white,
+    life-blue               #285AA1     white,
+    deep-space-sparkle      #3d5a6c     white,
+    cyan-cornflower-blue    #258ea6     white,
+    dark-sea-green          #83b692     white,
+    jungle-green            #1b998b     white,
+    middle-red              #e2856e     white,
+    light-salmon-pink       #f9ada0     black,
+    pumpkin                 #ff7f11     white,
+    buff                    #f4d58d     black,
+    yellow-crayola          #f9e784     black,
+    june-bud                #c5d86d     black,
+    black-shadows           #beb7a4     black,
+    charleston-green        #2f2d2e     white,
+    quartz                  #49475b     white,
+    nickel                  #69747c     white,
+    silver                  #bfc0c0     black,
+    violet                  #42113c     white,
+    shampoo                 #f0d3f7     black,
+    english-red             #a63a50     white,
+    persian-red             #c84630     white,
+    dark-candy-apple-red    #a10404     white
+;
+
+@import "includes/color-loop.less";
+@import "includes/mixins.less";
+@import "includes/tile-page.less";
+@import "includes/events.less";

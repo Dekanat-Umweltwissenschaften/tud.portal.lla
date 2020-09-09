@@ -1,0 +1,27 @@
+<model xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="title" type="zope.schema.TextLine">
+      <description/>
+      <title>Title</title>
+      <required>True</required>
+    </field>
+    <field name="text" type="plone.app.textfield.RichText">
+      <description/>
+      <title>Introduction text</title>
+    </field>
+    <field name="email" type="plone.schema.email.Email" lingua:independent="true">
+      <description>Will be displayed on the right hand side.</description>
+      <title>Contact email</title>
+      <required>True</required>
+    </field>
+    <field name="phone" type="zope.schema.TextLine">
+      <description>Will be displayed on the right hand side.</description>
+      <required>False</required>
+      <title>Phone</title>
+    </field>
+    <field name="address" type="zope.schema.Text">
+      <description>Will be displayed on the right hand side.</description>
+      <title>Address</title>
+    </field>
+  </schema>
+</model>

@@ -1,0 +1,11 @@
+.panel-group, .panel-default {
+    border: 1px solid grey;
+}
+
+.panel-group .panel-default .panel-heading {
+    display: block;
+    margin: 10px 0;
+    color: black;
+    text-decoration: none;
+}
+]

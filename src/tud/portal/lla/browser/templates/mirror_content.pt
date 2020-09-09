@@ -1,0 +1,31 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="tud.portal.lla">
+<body>
+    <metal:block fill-slot="main">
+        <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
+        <div id="content-core">
+            <div id="form-input">
+                <span tal:replace="structure view/contents" />
+            </div>
+            <div id="form-output" tal:condition="view/form_instance/output" tal:define="output view/form_instance/output;">
+                Ausgabe
+            </div>
+            <div id="form-hint" tal:condition="view/form_instance/already_translated" tal:define="already_translated view/form_instance/already_translated;">
+                <span i18n:translate="">
+                    <strong i18n:name="note" i18n:translate="">Note:</strong> This content has been already translated to the following languages:
+                    <ul i18n:name="language_links">
+                        <li tal:repeat="already_translated_item python:already_translated.items()">
+                            <tal:defines tal:define="lang python:already_translated_item[0]; obj python:already_translated_item[1]">
+                            <a tal:attributes="href python:obj.absolute_url()" tal:content="python: '{} ({})'.format(obj.Title(), lang)">
+                                Title (lang)
+                            </a>
+                            </tal:defines>
+                        </li>
+                    </ul>
+
+                </span>
+            </div>
+        </div>
+    </metal:block>
+</body>
+</html>

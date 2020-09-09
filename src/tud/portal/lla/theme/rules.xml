@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <!-- Include the backend theme -->
+    <xi:include href="++theme++barceloneta/backend.xml" />
+
+    <!-- Only theme front end pages -->
+    <rules css:if-content="body.frontend#visual-portal-wrapper">
+
+        <!-- Import Barceloneta rules -->
+        <!-- xi:include href="++theme++barceloneta/rules.xml" /-->
+
+
+        <!-- BARCELONETA Theme Rules -->
+            <theme href="index.html" />
+            <notheme css:if-not-content="#visual-portal-wrapper" />
+
+            <rules css:if-content="#portal-top">
+                <!-- Attributes -->
+                <copy attributes="*" css:theme="html" css:content="html" />
+                <!-- Base tag -->
+                <before css:theme="title" css:content="base" />
+                <!-- Title -->
+                <replace css:theme="title" css:content="title" />
+                <!-- Pull in Plone Meta -->
+                <after css:theme-children="head" css:content="head meta" />
+                <!-- Don't use Plone icons, use the theme's -->
+                <drop css:content="head link[rel='apple-touch-icon']" />
+                <drop css:content="head link[rel='shortcut icon']" />
+                <!-- CSS -->
+                <after css:theme-children="head" css:content="head link" />
+                <after css:theme-children="head" css:content="head style" />
+                <!-- Script -->
+                <after css:theme-children="head" css:content="head script" />
+            </rules>
+
+            <!-- Copy over the id/class attributes on the body tag. This is important for per-section styling -->
+            <copy attributes="*" css:content="body" css:theme="body" />
+
+            <!-- move global nav -->
+            <replace css:theme-children="#mainnavigation" css:content-children="#portal-mainnavigation" method="raw" />
+
+            <!-- move hero to top -->
+            <replace css:theme-children="#hero .gigantic" css:content-children=".hero"/>
+            <drop css:theme="#hero" css:if-not-content=".hero" />
+            <drop css:content=".hero" />
+
+            <!-- full-width breadcrumb -->
+            <replace css:content="#viewlet-above-content" css:theme="#above-content" />
+
+            <!-- Central column -->
+            <replace css:theme="#content-container" method="raw">
+
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <xsl:apply-templates css:select="#content" />
+                        </div>
+                    </div>
+                    <footer class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <xsl:copy-of css:select="#viewlet-below-content" />
+                        </div>
+                    </footer>
+                </div>
+            </replace>
+
+            <!-- Alert message -->
+            <replace css:theme-children="#global_statusmessage" css:content-children="#global_statusmessage" />
+
+            <!-- Left column -->
+            <rules css:if-content="#portal-column-one > * > *:not(.portletNavigationTree)">
+                <replace css:theme="#column1-container">
+                    <div class="col-xs-12 sidebar-offcanvas">
+                        <aside id="portal-column-one">
+                            <xsl:copy-of css:select="#portal-column-one > * > *:not(.portletNavigationTree)" />
+                        </aside>
+                    </div>
+                </replace>
+            </rules>
+
+            <!-- Right column -->
+            <rules css:if-content="#portal-column-two > * > *:not(.portletNavigationTree)">
+                <replace css:theme="#column2-container">
+                    <div class="col-xs-12 sidebar-offcanvas" role="complementary">
+                        <aside id="portal-column-two">
+                            <xsl:copy-of css:select="#portal-column-two > * > *:not(.portletNavigationTree)" />
+                        </aside>
+                    </div>
+                </replace>
+            </rules>
+
+            <!-- Content header -->
+            <replace css:theme="#portal-top" css:content-children="#portal-top" />
+
+            <!-- Footer -->
+            <!--replace css:theme-children="#portal-footer" css:content-children="#portal-footer-wrapper" /-->
+
+            <!-- toolbar -->
+            <!--<replace css:theme="#portal-toolbar" css:content-children="#edit-bar" css:if-not-content=".ajax_load" css:if-content=".userrole-authenticated" />-->
+            <drop css:theme="#portal-toolbar" css:if-content=".userrole-anonymous" />
+            <replace css:theme="#anonymous-actions" css:content-children="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous" />
+
+        <!-- BARCELONETA ends here -->
+
+
+        <rules css:if-content="#visual-portal-wrapper">
+        <!-- Placeholder for your own additional rules -->
+
+            <!-- Move the breadcrumps to the alternative place -->
+            <rules css:if-content="#alt-breadcrumbs">
+                <!-- replace one part of content with another -->
+                <replace css:content="#alt-breadcrumbs">
+                    <xsl:copy-of select="//*[@id='portal-breadcrumbs']" />
+                    <xsl:apply-templates mode="raw" />
+                </replace>
+                <!-- make sure it doesn't show up in two places -->
+                <drop content="//*[@id='portal-breadcrumbs']" />
+            </rules>
+
+            <!-- Remove the anontools (basically login Link) -->
+            <drop content="id('portal-anontools')]" />
+
+            <!-- Move the anontools to the alternative place -->
+            <replace css:theme="#footer-actions" css:content="#portal-footer-wrapper > *:not(#privacy-statement):not(#footer-copyright)" method="raw" />
+            <!-- Move copyright notice -->
+            <replace css:theme-children="#footer-copyright" css:content-children="#footer-copyright" method="raw" />
+
+            <drop content="id('portal-footer-wrapper')]" />
+
+            <!-- remove the search bar -->
+            <drop content="//*[@id='portal-searchbox']" />
+
+            <!-- Move the privacy statement to the right place -->
+            <replace css:theme="#privacy-statement" css:content="#privacy-statement" />
+
+        </rules>
+
+    </rules>
+
+</rules>

@@ -1,0 +1,80 @@
+<tal:sections
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     tal:define="portal_tabs view/portal_tabs"
+     tal:condition="portal_tabs"
+     i18n:domain="plone">
+
+  <p class="hiddenStructure" i18n:translate="heading_sections">Navigation</p>
+  <nav class="plone-navbar" id="portal-globalnav-wrapper">
+    <div class="container">
+      <div class="plone-navbar-header">
+        <button type="button" class="plone-navbar-toggle" data-toggle="collapse" data-target="#portal-globalnav-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
+        <ul class="plone-nav plone-navbar-nav"
+            id="portal-globalnav"
+            tal:define="selected_tab python:view.selected_portal_tab">
+            <tal:tabs tal:repeat="tab portal_tabs">
+              <li tal:define="tid tab/id;
+                              has_children python: 'children' in tab and len(tab['children'])"
+                  tal:attributes="id string:portaltab-${tid};
+                                  class python:selected_tab==tid and 'selected' or nothing">
+                  <a tal:content="tab/name"
+                     href=""
+                     tal:attributes="href tab/url;
+                                     title tab/description|nothing;
+                                     target tab/link_target|nothing;">
+                    Tab name
+                  </a>
+                  <button tal:condition="has_children"
+                          class="submenu-toggle icon-down" />
+                  <tal:submenu tal:condition="has_children">
+                      <ul>
+                        <tal:children tal:repeat="tab_child tab/children">
+                          <li>
+                              <a href=""
+                                 tal:content="tab_child/name"
+                                 tal:attributes="href tab_child/url;
+                                                 target tab_child/link_target|nothing;
+                                                 title tab_child/description|nothing;">
+                                  Tab Child Name
+                              </a>
+
+                          </li>
+                        </tal:children>
+                      </ul>
+                  </tal:submenu>
+              </li>
+            </tal:tabs>
+        </ul>
+        <ul class="plone-nav plone-navbar-nav"
+            id="portal-globalnav-extra"
+            tal:define="selected_tab python:view.selected_extra_tab;
+                extra_tabs view/extra_tabs">
+            <tal:tabs tal:repeat="tab extra_tabs">
+              <li tal:define="tid tab/id"
+                  tal:attributes="id string:portaltab-${tid};
+                                  class python:selected_tab==tid and 'selected' or nothing">
+                  <a href=""
+                     tal:content="tab/name"
+                     tal:attributes="href tab/url;
+                                     title tab/description|nothing;
+                                     target tab/link_target|nothing;">
+                    Tab Name
+                  </a>
+              </li>
+            </tal:tabs>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</tal:sections>

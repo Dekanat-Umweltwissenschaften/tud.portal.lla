@@ -1,0 +1,100 @@
+.main-tile {
+    margin-bottom: 2rem;
+}
+
+.tile {    
+    &.opaque {
+        .bg-image {
+            padding-top: 20rem;
+        }
+    }
+    
+    &.no-color::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: calc(~"100% - 3rem");
+        border-bottom: 2px solid lighten(grey, 20%);
+        
+        @media (min-width: @plone-screen-sm-min) {
+            .col-sm-4 & {
+                width: calc(~"33.333333% - 3rem");
+            }
+            
+            .col-sm-8 & {
+                width: calc(~"66.666666% - 3rem");
+            }
+        }
+    }
+    
+    .bg-image {
+        position: relative;
+        min-height: 20rem;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    
+    .copyright {
+        color: white;
+        font-size: 1.1rem;
+        position: absolute;
+        right: 0;
+        top: 20rem;
+        transform: translateY(-100%);
+        background-color: fadeout(@plone-footer-bg, 30%);
+        padding: .4em .8em;
+        
+        &:before {
+            content: "© ";
+            font-size: 1.4rem;
+            vertical-align: middle;
+        }
+    }
+    
+    .documentFirstHeading {
+        border: none;
+    }
+
+    .event-date {
+        background: white;
+        padding: 1em;
+        color: black;
+        border: 3px solid lightgrey;
+        border-bottom: 0;
+        text-transform: uppercase;
+        text-align: center;
+
+        span {
+            display: block;
+
+            &.day {
+                font-size: 4em;
+                line-height: 1em;
+            }
+        }
+    }
+
+    .tile-content {
+        padding: 1em;
+
+        h2 {
+            margin-top: 0;
+        }
+    }
+
+    & > a:not(.event_ical):hover {
+        text-decoration: none;
+
+        h2 {
+            text-decoration: underline;
+        }
+    }
+
+    a.event_ical {
+        padding-left: 1em;
+        margin-top: -1em;
+        display: inline-block;
+        margin-bottom: 1em;
+    }
+
+}

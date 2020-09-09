@@ -1,0 +1,111 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="tud.portal.lla">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="tud.portal.lla.interfaces.ITudPortalLlaLayer"
+      />
+
+  <!-- Publish static files -->
+  <browser:resourceDirectory
+      name="tud.portal.lla"
+      directory="static"
+      />
+        
+  <browser:page
+      name="view"
+      for="tud.portal.lla.tilepage.ITilePage"
+      class="tud.portal.lla.browser.tilepage.TilePageView"
+      template="templates/tilepageview.pt"
+      permission="zope2.View"
+      />
+
+    <!-- Footer -->
+    <browser:viewlet
+        name="tud.portal.lla.footer"
+        class=".footer_viewlet.FooterViewlet"
+        permission="zope2.View"
+        template="templates/footer_viewlet.pt"
+        layer="tud.portal.lla.interfaces.ITudPortalLlaLayer"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        />
+
+    <browser:viewlet
+        name="tud.portal.lla.global_sections"
+        class=".global_sections_viewlet.GlobalSectionsViewlet"
+        permission="zope2.View"
+        layer="tud.portal.lla.interfaces.ITudPortalLlaLayer"
+        manager="plone.app.layout.viewlets.interfaces.IMainNavigation"
+        />
+
+  <browser:viewlet
+      name="tud.portal.lla.piwik_viewlet"
+      for="tud.portal.lla.interfaces.IImprintPage"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      class=".piwik_viewlet.PiwikViewlet"
+      layer="tud.portal.lla.interfaces.ITudPortalLlaLayer"
+      permission="zope2.View"
+      />
+
+  <browser:viewlet
+      name="tud.portal.lla.privacy_staement_viewlet"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+      class=".privacy_staement_viewlet.PrivacyStatementViewlet"
+      layer="tud.portal.lla.interfaces.ITudPortalLlaLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
+    for="plone.app.multilingual.interfaces.ITranslatable"
+    name="mirror_content"
+    class=".mirror_content.MirrorContentFormView"
+    permission="cmf.ManagePortal"/>
+
+    <include package = "z3c.unconfigure" file = "meta.zcml" />
+    <unconfigure>
+          <browser:menu
+            id="plone_contentmenu_multilingual"
+            title="Translate menu - contains translation-related actions"
+            class="plone.app.multilingual.browser.menu.TranslateMenu"
+          />
+    </unconfigure>
+
+  <browser:menu
+      id="plone_contentmenu_multilingual"
+      title="Translate menu - contains translation-related actions"
+      class=".menu.TranslateMenu"/>
+
+  <browser:page
+      for="tud.portal.lla.contact.IContact"
+      name="view"
+      class=".contact.ContactView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="newsletter"
+      class=".newsletter.NewsletterForm"
+      permission="zope.Public"
+      />
+  <browser:page
+      for="*"
+      name="contact-link"
+      class=".contact_link.ContactLinkView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="newsletter-settings"
+      class=".newsletter_control_panel.NewsletterControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+</configure>

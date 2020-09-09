@@ -1,0 +1,40 @@
+
+.color-loop(@index) when (@index > 0){
+    @color-set: extract(@colors, @index); //extract based on comma separator each page-icon combo
+    @color-name: extract(@color-set,1); //first part of the extracted value is the page type
+    @color: extract(@color-set,2); //second part is the icon
+    @font-color: extract(@color-set,3);
+    .@{color-name}{
+        background-color: @color;
+        color: @font-color;
+        h1, h2 {
+            color: @font-color;
+        }
+        .tile-content {
+            background: -moz-linear-gradient(top, fade(@color, 70%) 0%, fade(@color, 70%) 75%, @color 100%);
+            background: -webkit-linear-gradient(top, fade(@color, 70%) 0%, fade(@color, 70%) 75%, @color 100%);
+            background: linear-gradient(to bottom, fade(@color, 70%) 0%, fade(@color, 70%) 75%, @color 100%);
+        }
+        .documentDescription {
+            color: @font-color;
+        }
+        a, a:hover, a:focus, a:visited {
+            color: @font-color;
+        }
+    }
+
+    // color the color-options in tile / tilePage edit forms
+    body.template-tile,
+    body.template-tilepage,
+    body.portaltype-tilepage,
+    body.portaltype-tile {
+        @zero-index: @index - 1;
+        #form-widgets-color-@{zero-index} {
+            background-color: @color;
+            color: @font-color;
+        }
+    }
+
+    .color-loop(@index - 1);
+}
+.color-loop(length(@colors));
