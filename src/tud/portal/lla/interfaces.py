@@ -14,6 +14,10 @@ class IImprintPage(Interface):
     """Marker Interface to indicate, that the content is an imprint page.
     """
 
+class IAccessibilityDeclarationPage(Interface):
+    """Marker Interface to indicate, that the content is the accessibility declaration page.
+    """
+
 class INewsletterSettings(Interface):
     """Settings for newsletter.
     """

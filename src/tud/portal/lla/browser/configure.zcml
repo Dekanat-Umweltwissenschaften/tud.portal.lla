@@ -16,7 +16,7 @@
       name="tud.portal.lla"
       directory="static"
       />
-        
+
   <browser:page
       name="view"
       for="tud.portal.lla.tilepage.ITilePage"
@@ -94,10 +94,18 @@
       class=".newsletter.NewsletterForm"
       permission="zope.Public"
       />
+
   <browser:page
       for="*"
       name="contact-link"
       class=".contact_link.ContactLinkView"
+      permission="zope.Public"
+      />
+
+  <browser:page
+      for="*"
+      name="accessibility-link"
+      class=".accessibility_link.AccessibilityLinkView"
       permission="zope.Public"
       />
 

@@ -4,32 +4,43 @@
        xmlns:marshal="http://namespaces.plone.org/supermodel/marshal"
        xmlns:security="http://namespaces.plone.org/supermodel/security"
        xmlns:users="http://namespaces.plone.org/supermodel/users"
-       xmlns="http://namespaces.plone.org/supermodel/schema">
+       xmlns="http://namespaces.plone.org/supermodel/schema"
+       i18n:domain="tud.portal.lla">
   <schema>
     <field name="image" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Image</title>
+      <title i18n:translate="">Image</title>
     </field>
     <field name="image_copyright" type="zope.schema.TextLine" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Copyright information for the image</title>
+      <title i18n:translate="">Copyright information for the image</title>
+    </field>
+    <field name="image_alt" type="zope.schema.TextLine" lingua:independent="false">
+      <description i18n:translate="">This text is not visible on the page, but is read by screen readers. It should describe what can be seen on the image.</description>
+      <required>False</required>
+      <title i18n:translate="">Alternative text for the image</title>
     </field>
     <field name="tileimage" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
-      <description>The main image is used when no image is selected here</description>
+      <description i18n:translate="">The main image is used when no image is selected here</description>
       <required>False</required>
-      <title>Image for tile (preview) representation</title>
+      <title i18n:translate="">Image for tile (preview) representation</title>
     </field>
     <field name="tileimage_copyright" type="zope.schema.TextLine" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Copyright information for the tile image</title>
+      <title i18n:translate="">Copyright information for the tile image</title>
+    </field>
+    <field name="tileimage_alt" type="zope.schema.TextLine" lingua:independent="false">
+      <description i18n:translate="">This text is not visible on the page, but is read by screen readers. It should describe what can be seen on the image.</description>
+      <required>False</required>
+      <title i18n:translate="">Alternative text for the tile image</title>
     </field>
     <field name="color" type="zope.schema.Choice" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Color</title>
+      <title i18n:translate="">Color</title>
       <values>
         <element>Red</element>
         <element>Green</element>

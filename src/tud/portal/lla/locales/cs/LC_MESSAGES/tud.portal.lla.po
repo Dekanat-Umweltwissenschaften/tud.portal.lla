@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-07-06 15:03+0000\n"
+"POT-Creation-Date: 2020-09-14 14:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,88 @@ msgstr ""
 msgid "${note} This content has been already translated to the following languages: ${language_links}"
 msgstr ""
 
+#: ../profiles/default/types/TilePage.xml
+msgid "A page that can hold tiles."
+msgstr ""
+
+#: ../profiles/default/types/Tile.xml
+msgid "A tile that can be placed on a Tile Page."
+msgstr ""
+
 #: ../profiles/default/actions.xml
-msgid "About this website"
-msgstr "O této stránce"
+msgid "Accessibility"
+msgstr ""
+
+#: ../models/contact.xml
+msgid "Address"
+msgstr ""
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Alternative text for the image"
+msgstr ""
+
+#: ../models/tilePage.xml
+msgid "Alternative text for the tile image"
+msgstr ""
+
+#: ../profiles/default/types/Contact.xml
+msgid "An object to store contact information and offer a form."
+msgstr ""
 
 #: ../browser/mirror_content.py:71
 msgid "Choose the languages you wish to translate this content object."
+msgstr ""
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Color"
 msgstr ""
 
 #: ../profiles/default/actions.xml
 msgid "Contact"
 msgstr "Kontakt"
 
+#: ../profiles/default/types/Contact.xml
+msgid "Contact Information"
+msgstr ""
+
+#: ../models/contact.xml
+msgid "Contact email"
+msgstr ""
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Copyright information for the image"
+msgstr ""
+
+#: ../models/tilePage.xml
+msgid "Copyright information for the tile image"
+msgstr ""
+
 #: ../browser/mirror_content.py:78
 msgid "If checked, copied contents will also have the same state of the original content. Otherwise, it will be in the initial state (e.g. private)."
+msgstr ""
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Image"
+msgstr ""
+
+#: ../models/tilePage.xml
+msgid "Image for tile (preview) representation"
+msgstr ""
+
+#: ../configure.zcml:30
+msgid "Installs the tud.portal.lla add-on."
+msgstr ""
+
+#: ../models/tile.xml
+msgid "Internal Link target"
+msgstr ""
+
+#: ../models/contact.xml
+msgid "Introduction text"
 msgstr ""
 
 #: ../browser/mirror_content.py:77
@@ -40,6 +108,14 @@ msgstr ""
 
 #: ../browser/mirror_content.py:70
 msgid "Languages"
+msgstr ""
+
+#: ../profiles/default/actions.xml
+msgid "Legal notice and privacy"
+msgstr ""
+
+#: ../models/tile.xml
+msgid "Link URL"
 msgstr ""
 
 #: ../profiles/default/actions.xml
@@ -54,12 +130,57 @@ msgstr ""
 msgid "Note:"
 msgstr ""
 
+#: ../models/tile.xml
+msgid "Overrides the internal link target."
+msgstr ""
+
+#: ../models/contact.xml
+msgid "Phone"
+msgstr ""
+
 #: ../profiles/default/actions.xml
 msgid "Sharepoint"
 msgstr ""
 
+#: ../models/tilePage.xml
+msgid "The main image is used when no image is selected here"
+msgstr ""
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "This text is not visible on the page, but is read by screen readers. It should describe what can be seen on the image."
+msgstr ""
+
+#: ../profiles/default/types/Tile.xml
+msgid "Tile"
+msgstr ""
+
+#: ../profiles/default/types/TilePage.xml
+msgid "Tile Page"
+msgstr ""
+
+#: ../models/contact.xml
+msgid "Title"
+msgstr ""
+
+#: ../browser/configure.zcml:76
+msgid "Translate menu - contains translation-related actions"
+msgstr ""
+
 #: ../browser/newsletter.py:97
 msgid "Unable to send mail: ${exception}"
+msgstr ""
+
+#: ../configure.zcml:39
+msgid "Uninstalls the tud.portal.lla add-on."
+msgstr ""
+
+#: ../models/tile.xml
+msgid "Width"
+msgstr ""
+
+#: ../models/contact.xml
+msgid "Will be displayed on the right hand side."
 msgstr ""
 
 #. Default: "Address"
@@ -92,12 +213,12 @@ msgid "email"
 msgstr ""
 
 #. Default: "Environment LIFE Programme Logo"
-#: ../browser/templates/footer_viewlet.pt:20
+#: ../browser/templates/footer_viewlet.pt:22
 msgid "footer_life_logo_alt"
 msgstr ""
 
 #. Default: "This Project is funded by the European Union in the LIFE Programme."
-#: ../browser/templates/footer_viewlet.pt:22
+#: ../browser/templates/footer_viewlet.pt:24
 msgid "footer_life_text"
 msgstr "Tento projekt je spolufinancován Evropskou unií v rámci programu LIFE."
 
@@ -107,12 +228,12 @@ msgid "imprintLink"
 msgstr ""
 
 #. Default: "Mailing list address"
-#: ../interfaces.py:22
+#: ../interfaces.py:26
 msgid "mailing_list_address"
 msgstr ""
 
 #. Default: "When the mailing list address is mylist@groups.tu-dresden.de, this entry should be mylist-request@groups.tu-dresden.de. This only works for mailman as system."
-#: ../interfaces.py:23
+#: ../interfaces.py:27
 msgid "mailing_list_address_description"
 msgstr ""
 
@@ -151,6 +272,11 @@ msgstr ""
 msgid "newsletter_unsubscribe"
 msgstr ""
 
+#. Default: "Open submenu"
+#: ../browser/templates/sections_viewlet.pt:37
+msgid "open_submenu"
+msgstr ""
+
 #. Default: "Phone"
 #: ../browser/templates/contact.pt:68
 msgid "phone"
@@ -186,3 +312,10 @@ msgstr ""
 msgid "title_mirror_content"
 msgstr ""
 
+#: ../configure.zcml:30
+msgid "tud.portal.lla"
+msgstr ""
+
+#: ../configure.zcml:39
+msgid "tud.portal.lla (uninstall)"
+msgstr ""

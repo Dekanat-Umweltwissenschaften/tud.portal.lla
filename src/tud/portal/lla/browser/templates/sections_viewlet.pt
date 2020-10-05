@@ -35,7 +35,7 @@
                     Tab name
                   </a>
                   <button tal:condition="has_children"
-                          class="submenu-toggle icon-down" />
+                          class="submenu-toggle icon-down" aria-label="Open submenu" i18n:domain="tud.portal.lla" i18n:attributes="aria-label open_submenu"/>
                   <tal:submenu tal:condition="has_children">
                       <ul>
                         <tal:children tal:repeat="tab_child tab/children">

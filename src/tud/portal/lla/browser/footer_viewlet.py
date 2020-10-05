@@ -5,6 +5,8 @@
 """A footer viewlet
 """
 
+from datetime import date
+
 from plone.app.layout.viewlets import ViewletBase
 from zope.component import getMultiAdapter
 
@@ -35,3 +37,9 @@ class FooterViewlet(ViewletBase):
                 info['data-pat-plone-modal'] = modal
             self.footer_actions.append(info)
 
+    def shown_year(self):
+        """Returns the current year. Capped to 2021 as this is the last year of the project.
+
+        :return:
+        """
+        return min(date.today().year, 2021)

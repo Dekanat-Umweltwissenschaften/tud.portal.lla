@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-07-06 15:03+0000\n"
+"POT-Creation-Date: 2020-09-14 14:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,89 @@ msgstr ""
 msgid "${note} This content has been already translated to the following languages: ${language_links}"
 msgstr "${note} Dieser Inhalt wurde bereits für folgende Sprache übersetzt: ${language_links}"
 
+#: ../profiles/default/types/TilePage.xml
+msgid "A page that can hold tiles."
+msgstr "Eine Seite, die Kacheln beinhalten kann."
+
+#: ../profiles/default/types/Tile.xml
+msgid "A tile that can be placed on a Tile Page."
+msgstr "Eine Kachel, die in einer Kachel-Seite platziert werden kann."
+
 #: ../profiles/default/actions.xml
-msgid "About this website"
-msgstr "Impressum"
+msgid "Accessibility"
+msgstr "Barrierefreiheit"
+
+#: ../models/contact.xml
+msgid "Address"
+msgstr "Adresse"
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Alternative text for the image"
+msgstr "Alternativtext für das Bild"
+
+#: ../models/tilePage.xml
+msgid "Alternative text for the tile image"
+msgstr "Alternativtext für das Kachel-Bild"
+
+#: ../profiles/default/types/Contact.xml
+msgid "An object to store contact information and offer a form."
+msgstr "Ein Objekt, um Kontaktinformation zu speichern und ein Formular dazu anzubieten."
 
 #: ../browser/mirror_content.py:71
 msgid "Choose the languages you wish to translate this content object."
 msgstr "Wähle Sie die Sprachen aus, in die dieses Inhaltsobjekt übersetzt werden soll."
 
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Color"
+msgstr "Farbe"
+
 #: ../profiles/default/actions.xml
 msgid "Contact"
 msgstr "Kontakt"
 
+#: ../profiles/default/types/Contact.xml
+msgid "Contact Information"
+msgstr "Kontaktinformationen"
+
+#: ../models/contact.xml
+msgid "Contact email"
+msgstr "Kontakt-Email-Adresse"
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Copyright information for the image"
+msgstr "Copyright-Informationen für das Bild"
+
+#: ../models/tilePage.xml
+msgid "Copyright information for the tile image"
+msgstr "Copyright-Informationen für das Kachel-Bild"
+
 #: ../browser/mirror_content.py:78
 msgid "If checked, copied contents will also have the same state of the original content. Otherwise, it will be in the initial state (e.g. private)."
 msgstr "Falls markiert, werden kopierte Inhalte in denselben Zustand wie das Original versetzt. Ansonsten wird der Inhalt in den initialen Zustand versetzt (z.B. privat)."
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "Image"
+msgstr "Bild"
+
+#: ../models/tilePage.xml
+msgid "Image for tile (preview) representation"
+msgstr "Kachel-Bild für die Vorschau-Ansicht"
+
+#: ../configure.zcml:30
+msgid "Installs the tud.portal.lla add-on."
+msgstr ""
+
+#: ../models/tile.xml
+msgid "Internal Link target"
+msgstr "Internes Link-Ziel"
+
+#: ../models/contact.xml
+msgid "Introduction text"
+msgstr "Einleitungstext"
 
 #: ../browser/mirror_content.py:77
 msgid "Keep workflow states?"
@@ -43,24 +111,77 @@ msgid "Languages"
 msgstr "Sprachen"
 
 #: ../profiles/default/actions.xml
+msgid "Legal notice and privacy"
+msgstr "Impressum und Datenschutz"
+
+#: ../models/tile.xml
+msgid "Link URL"
+msgstr "Link-URL"
+
+#: ../profiles/default/actions.xml
 msgid "Newsletter"
 msgstr ""
 
 #: ../profiles/default/controlpanel.xml
 msgid "Newsletter Settings"
-msgstr ""
+msgstr "Newsletter-Einstellungen"
 
 #: ../browser/templates/mirror_content.pt:15
 msgid "Note:"
 msgstr "Hinweis:"
 
+#: ../models/tile.xml
+msgid "Overrides the internal link target."
+msgstr "Überschreibt das interne Link-Ziel."
+
+#: ../models/contact.xml
+msgid "Phone"
+msgstr "Telefon"
+
 #: ../profiles/default/actions.xml
 msgid "Sharepoint"
 msgstr ""
 
+#: ../models/tilePage.xml
+msgid "The main image is used when no image is selected here"
+msgstr "Das Haupt-Bild wird benutzt, wenn kein Bild hier ausgewählt wurde."
+
+#: ../models/tile.xml
+#: ../models/tilePage.xml
+msgid "This text is not visible on the page, but is read by screen readers. It should describe what can be seen on the image."
+msgstr "Dieser Text ist nicht auf der Seite sichtbar, wird aber von Screenreadern vorgelesen. Er soll beschreiben, was auf der Abbildung zu sehen ist."
+
+#: ../profiles/default/types/Tile.xml
+msgid "Tile"
+msgstr "Kachel"
+
+#: ../profiles/default/types/TilePage.xml
+msgid "Tile Page"
+msgstr "Kachel-Seite"
+
+#: ../models/contact.xml
+msgid "Title"
+msgstr "Titel"
+
+#: ../browser/configure.zcml:76
+msgid "Translate menu - contains translation-related actions"
+msgstr ""
+
 #: ../browser/newsletter.py:97
 msgid "Unable to send mail: ${exception}"
+msgstr "Konnte die Mail nicht versenden: ${exception}"
+
+#: ../configure.zcml:39
+msgid "Uninstalls the tud.portal.lla add-on."
 msgstr ""
+
+#: ../models/tile.xml
+msgid "Width"
+msgstr "Breite"
+
+#: ../models/contact.xml
+msgid "Will be displayed on the right hand side."
+msgstr "Wird auf der rechten Seite angezeigt."
 
 #. Default: "Address"
 #: ../browser/templates/contact.pt:79
@@ -75,7 +196,7 @@ msgstr "Inhalte spiegeln"
 #. Default: "Newsletter-relevant settings."
 #: ../browser/newsletter_control_panel.py:10
 msgid "control_panel_newsletter_desc"
-msgstr ""
+msgstr "Newsletter-relevante Einstellungen."
 
 #. Default: "Newsletter"
 #: ../browser/newsletter_control_panel.py:9
@@ -92,12 +213,12 @@ msgid "email"
 msgstr "E-Mail"
 
 #. Default: "Environment LIFE Programme Logo"
-#: ../browser/templates/footer_viewlet.pt:20
+#: ../browser/templates/footer_viewlet.pt:22
 msgid "footer_life_logo_alt"
-msgstr ""
+msgstr "Das Logo des Umweltprogramms LIFE"
 
 #. Default: "This Project is funded by the European Union in the LIFE Programme."
-#: ../browser/templates/footer_viewlet.pt:22
+#: ../browser/templates/footer_viewlet.pt:24
 msgid "footer_life_text"
 msgstr "Das Projekt wird durch das EU-Umweltprogramm LIFE gefördert."
 
@@ -107,14 +228,14 @@ msgid "imprintLink"
 msgstr "Mehr Informationen"
 
 #. Default: "Mailing list address"
-#: ../interfaces.py:22
+#: ../interfaces.py:26
 msgid "mailing_list_address"
-msgstr ""
+msgstr "Mailingliste-Adresse"
 
 #. Default: "When the mailing list address is mylist@groups.tu-dresden.de, this entry should be mylist-request@groups.tu-dresden.de. This only works for mailman as system."
-#: ../interfaces.py:23
+#: ../interfaces.py:27
 msgid "mailing_list_address_description"
-msgstr ""
+msgstr "Wenn die Mailing-Liste-Adresse mylist@groups.tu-dresden.de ist, dann sollte hier mylist-request@groups.tu-dresden.de stehen. Dies funktioniert nur für das System mailman."
 
 #. Default: "With this form you can replicate the current object and its children from this language folder into another language folders. You still have to make sure, that the container path is present in the destination location."
 #: ../browser/mirror_content.py:91
@@ -129,12 +250,12 @@ msgstr "Dieses Objekt in andere Sprachen spiegeln."
 #. Default: "Your email address"
 #: ../browser/newsletter.py:26
 msgid "newsletter_email_address"
-msgstr ""
+msgstr "Ihre E-Mail-Adresse"
 
 #. Default: "Please enter your email address to (un-)subscribe to LLA-Newsletter."
 #: ../browser/newsletter.py:37
 msgid "newsletter_form_description"
-msgstr ""
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse, um den LLA-Newsletter zu abonnieren oder abzubestellen"
 
 #. Default: "Newsletter"
 #: ../browser/newsletter.py:35
@@ -144,12 +265,17 @@ msgstr ""
 #. Default: "Subscribe"
 #: ../browser/newsletter.py:46
 msgid "newsletter_subscribe"
-msgstr ""
+msgstr "Abonnieren"
 
 #. Default: "Unsubscribe"
 #: ../browser/newsletter.py:60
 msgid "newsletter_unsubscribe"
-msgstr ""
+msgstr "Abbestellen"
+
+#. Default: "Open submenu"
+#: ../browser/templates/sections_viewlet.pt:37
+msgid "open_submenu"
+msgstr "Untermenü öffnen"
 
 #. Default: "Phone"
 #: ../browser/templates/contact.pt:68
@@ -164,12 +290,12 @@ msgstr "Unsere Webseite nutzt Cookies und die Analysesoftware Piwik."
 #. Default: "A request for subscribing the newsletter has been sent. Please check your emails to confirm this action."
 #: ../browser/newsletter.py:55
 msgid "status_message_newsletter_subscribed"
-msgstr ""
+msgstr "Eine Anfrage zum abonnieren des Newsletters wurde verschickt. Bitte prüfen Sie ihre E-Mails, um diese Aktion zu bestätigen."
 
 #. Default: "A request for unsubscribing the newsletter has been sent. Please check your emails to confirm this action."
 #: ../browser/newsletter.py:69
 msgid "status_message_newsletter_unsubscribed"
-msgstr ""
+msgstr "Eine Anfrage zum abbestellen des Newsletters wurde verschickt. Bitte prüfen Sie ihre E-Mails, um diese Aktion zu bestätigen."
 
 #. Default: "Did not find container ${path}."
 #: ../browser/mirror_content.py:129
@@ -186,3 +312,10 @@ msgstr "Inhalte erfolgreich für folgende Sprache gespiegelt: ${languages}"
 msgid "title_mirror_content"
 msgstr "Dieses Objekt in andere Sprachen spiegeln."
 
+#: ../configure.zcml:30
+msgid "tud.portal.lla"
+msgstr ""
+
+#: ../configure.zcml:39
+msgid "tud.portal.lla (uninstall)"
+msgstr ""

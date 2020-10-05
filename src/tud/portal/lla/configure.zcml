@@ -12,6 +12,8 @@
 
   <include package=".browser" />
 
+  <interface interface="tud.portal.lla.interfaces.IAccessibilityDeclarationPage" />
+
   <plone:static
       directory="theme"
       type="theme"

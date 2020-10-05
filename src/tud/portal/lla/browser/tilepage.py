@@ -111,9 +111,9 @@ class TilePageView(BrowserView):
     def tilePageDepth(self):
         context = aq_inner(self.context)
         iter = context.aq_parent
-        
+
         depth = 0
-        
+
         while iter is not None:
             if INavigationRoot.providedBy(iter):
                 break
@@ -122,9 +122,9 @@ class TilePageView(BrowserView):
             if not hasattr(iter, "aq_parent"):
                 raise RuntimeError("Parent traversing interrupted by object: " + str(iter))
             iter = iter.aq_parent
-        
+
         return depth
-        
+
     def parentColor(self):
         context = aq_inner(self.context)
         iter = context.aq_parent
@@ -139,20 +139,20 @@ class TilePageView(BrowserView):
             if not hasattr(iter, "aq_parent"):
                 raise RuntimeError("Parent traversing interrupted by object: " + str(iter))
             iter = iter.aq_parent
-        
+
         return color
-        
+
     def color(self):
         context = aq_inner(self.context)
-        
+
         if context.color != None:
             return context.color
-        
+
         return self.parentColor()
-        
+
     def imageDetails(self):
         context = aq_inner(self.context)
-        
+
         if context.image != None:
             iter = context
         else:
@@ -166,13 +166,13 @@ class TilePageView(BrowserView):
                 if not hasattr(iter, "aq_parent"):
                     raise RuntimeError("Parent traversing interrupted by object: " + str(iter))
                 iter = iter.aq_parent
-            
+
         scales = iter.restrictedTraverse('@@images')
         image_scaled = scales.scale('image', width=1140, height=200, direction='down')
         url = None
         if image_scaled:
             url = image_scaled.url
-            
+
         image_large = scales.scale('image', width=1000, height=700, direction='keep')
         largeUrl = None
         largeWidth = 0
@@ -181,20 +181,21 @@ class TilePageView(BrowserView):
             largeUrl = image_large.url
             largeWidth = image_large.width
             largeHeight = image_large.height
-        
+
         copyright = iter.image_copyright
-        
-        return { 'url': url, 'copyright': copyright, 'largeUrl': largeUrl, 'largeWidth': largeWidth, 'largeHeight': largeHeight }
-                
+        alt = iter.image_alt
+
+        return { 'url': url, 'copyright': copyright, 'alt': alt, 'largeUrl': largeUrl, 'largeWidth': largeWidth, 'largeHeight': largeHeight }
+
     def siblings(self):
         context = aq_inner(self.context)
         parent = context.aq_parent
-        
+
         if INavigationRoot.providedBy(parent):
             return []
-            
+
         catalog = api.portal.get_tool(name='portal_catalog')
-        
+
         siblings = catalog(
             object_provides=[ITilePage.__identifier__],
             path={
@@ -203,5 +204,5 @@ class TilePageView(BrowserView):
                 },
             sort_on='getObjPositionInParent'
             )
-        
+
         return siblings

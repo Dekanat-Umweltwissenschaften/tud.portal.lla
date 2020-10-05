@@ -4,22 +4,28 @@
        xmlns:marshal="http://namespaces.plone.org/supermodel/marshal"
        xmlns:security="http://namespaces.plone.org/supermodel/security"
        xmlns:users="http://namespaces.plone.org/supermodel/users"
-       xmlns="http://namespaces.plone.org/supermodel/schema">
+       xmlns="http://namespaces.plone.org/supermodel/schema"
+       i18n:domain="tud.portal.lla">
   <schema>
     <field name="image" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Image</title>
+      <title i18n:translate="">Image</title>
     </field>
     <field name="image_copyright" type="zope.schema.TextLine" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Copyright information for the image</title>
+      <title i18n:translate="">Copyright information for the image</title>
+    </field>
+    <field name="image_alt" type="zope.schema.TextLine" lingua:independent="false">
+      <description i18n:translate="">This text is not visible on the page, but is read by screen readers. It should describe what can be seen on the image.</description>
+      <required>False</required>
+      <title i18n:translate="">Alternative text for the image</title>
     </field>
     <field name="color" type="zope.schema.Choice" lingua:independent="true">
       <description/>
       <required>False</required>
-      <title>Color</title>
+      <title i18n:translate="">Color</title>
       <values>
         <element>Red</element>
         <element>Green</element>
@@ -52,7 +58,7 @@
     </field>
     <field name="width" type="zope.schema.Choice" lingua:independent="true">
       <description/>
-      <title>Width</title>
+      <title i18n:translate="">Width</title>
       <values>
         <element>1/3</element>
         <element>2/3</element>
@@ -61,12 +67,12 @@
     <field name="relationlink" type="z3c.relationfield.schema.RelationChoice">
       <description/>
       <required>False</required>
-      <title>Internal Link target</title>
+      <title i18n:translate="">Internal Link target</title>
     </field>
     <field name="urllink" type="zope.schema.URI">
-      <description>Overrides the internal link target.</description>
+      <description i18n:translate="">Overrides the internal link target.</description>
       <required>False</required>
-      <title>Link URL</title>
+      <title i18n:translate="">Link URL</title>
     </field>
   </schema>
 </model>

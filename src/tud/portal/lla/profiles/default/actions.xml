@@ -70,7 +70,7 @@
    <property name="visible">True</property>
   </object>
   <object name="imprint" meta_type="CMF Action" i18n:domain="tud.portal.lla">
-   <property name="title" i18n:translate="">About this website</property>
+   <property name="title" i18n:translate="">Legal notice and privacy</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:${globals_view/navigationRootUrl}/about-this-website</property>
    <property name="icon_expr"></property>
@@ -86,6 +86,17 @@
    <property name="url_expr">context/@@contact-link</property>
    <property name="icon_expr"></property>
    <property name="available_expr">context/@@contact-link</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+  <object name="accessibility" meta_type="CMF Action" i18n:domain="tud.portal.lla">
+   <property name="title" i18n:translate="">Accessibility</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">context/@@accessibility-link</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">context/@@accessibility-link</property>
    <property name="permissions">
     <element value="View"/>
    </property>

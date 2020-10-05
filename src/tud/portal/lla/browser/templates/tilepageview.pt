@@ -30,6 +30,9 @@
                    tal:attributes="data-pat-plone-modal string: margin: 0;;width: ${modalWidth}">
                     <div class="bg-image"
                          tal:attributes="style string: background-image:url('${image_details/url}');">
+                         <div class="alternative-text" role="img" aria-label="alternative text"
+                         tal:attributes="aria-label image_details/alt"
+                         tal:condition="image_details/alt"></div>
                          <div class="copyright"
                               tal:condition="image_details/copyright|nothing"
                               tal:content="image_details/copyright"></div>
@@ -39,32 +42,32 @@
                     <img tal:attributes="src image_details/largeUrl" />
                 </div>
             </tal:bg-image>
-            
+
             <div class="tile-content">
                 <div tal:replace="structure provider:plone.abovecontenttitle"></div>
-                
+
                 <a tal:condition="not: view/parentIsRoot" tal:attributes="href parentNode/absolute_url">
                     <h1 class="documentFirstHeading" tal:content="python: parentNode.title" />
                 </a>
                 <h1 tal:condition="view/parentIsRoot" class="documentFirstHeading" tal:content="context/title" />
 
                 <div tal:replace="structure provider:plone.belowcontenttitle"></div>
-                
+
                 <p tal:condition="view/parentIsRoot" class="documentDescription" tal:content="context/description" />
             </div>
         </div>
-        
+
         <div tal:attributes="class python: view.isFrontPage() and 'sr-only' or ''">
             <div id="alt-breadcrumbs"></div>
         </div>
-        
+
         <div class="content-text">
             <div tal:replace="structure provider:plone.abovecontentbody" />
-            
+
             <h2 tal:condition="not: view/parentIsRoot" tal:content="context/title" />
-            
+
             <p tal:condition="not: view/parentIsRoot" class="documentDescription" tal:content="context/description" />
-            
+
             <div tal:condition="context/text" tal:content="structure context/text/output" />
         </div>
 
@@ -104,6 +107,7 @@
                                            hasTileImage tileObj/tileimage|nothing;
                                            imageField python: hasTileImage and 'tileimage' or 'image';
                                            copyright python: (hasTileImage and tileObj.tileimage_copyright) or (not hasTileImage and tileObj.image_copyright);
+                                           alt python: (hasTileImage and tileObj.tileimage_alt) or (not hasTileImage and tileObj.image_alt);
                                            tileLink python: isTile and (tileObj.urllink or (tileObj.relationlink and tileObj.relationlink.to_object and tileObj.relationlink.to_object.absolute_url())) or '';
                                            link python: ( not isTile ) and tileObj.absolute_url() or tileLink;
                                            linkTargetBlank python: not link.startswith(view.getPortalURL())">
@@ -120,6 +124,7 @@
                                                     image_scaled python: scales.scale(imageField, width = 750, height = 600, direction = 'down');
                                                     imgUrl image_scaled/url|nothing"
                                              tal:attributes="style string: background-image:url('${imgUrl}');">
+                                             <div class="alternative-text" role="img" aria-label="alternative text" tal:attributes="aria-label alt" tal:condition="alt"></div>
                                             <div class="copyright"
                                                  tal:condition="copyright"
                                                  tal:omit-tag="python: not (hasImage or hasTileImage)"
@@ -134,7 +139,7 @@
                                 </div>
                             </div>
                         </tal:width-two>
-                        
+
                         <tal:width-one tal:condition="python: width == '1/3'">
                             <div class='col-sm-4'>
                                 <div tal:attributes="class python: color and 'tile %s' % color.lower() or 'tile no-color'">
@@ -147,6 +152,8 @@
                                                              image_scaled python: scales.scale(imageField, width = 360, height = 200, direction = 'down');
                                                              url image_scaled/url|nothing"
                                                  tal:attributes="style string: background-image:url('${url}');">
+                                                 <div class="alternative-text" role="img" aria-label="alternative text"
+                                                      tal:attributes="aria-label alt" tal:condition="alt"></div>
                                                  <div class="copyright"
                                                       tal:condition="copyright"
                                                       tal:content="copyright"></div>
@@ -162,29 +169,30 @@
                                 <div tal:omit-tag="color" class="tile-end"></div>
                             </div>
                         </tal:width-one>
-                        
+
 
                     </tal:block>
                 </tal:repeat>
-                
+
             </div>
         </tal:block>
-            
+
         <tal:block tal:condition="python: len(tiles) == 0 and tilePageDepth > 0 and len(siblings) > 1"
                    tal:define="siblings_not_self python: [s.getObject() for s in siblings if s.getObject().UID != context.UID];
                                siblings_rows python: [siblings_not_self[i:i+3] for i in range(0, len(siblings_not_self), 3)];">
-                
+
             <div tal:repeat="siblings_row siblings_rows" class="row tiles">
                 <div tal:repeat="tileObj siblings_row" class='col-sm-4'>
                    <div tal:define="tileColor python: tileObj.color != None and tileObj.color or view.parentColor();
                                     link python: tileObj.absolute_url();
-                                    
+
                                     hasImage tileObj/image|nothing;
                                     hasTileImage tileObj/tileimage|nothing;
                                     imageField python: hasTileImage and 'tileimage' or 'image';
-                                    copyright python: (hasTileImage and tileObj.tileimage_copyright) or (not hasTileImage and tileObj.image_copyright);"
+                                    copyright python: (hasTileImage and tileObj.tileimage_copyright) or (not hasTileImage and tileObj.image_copyright);
+                                    alt python: (hasTileImage and tileObj.tileimage_alt) or (not hasTileImage and tileObj.image_alt);"
                         tal:attributes="class python: tileColor and 'tile %s' % tileColor.lower() or 'tile no-tileColor'">
-                        
+
                        <a tal:omit-tag="not: link"
                           tal:attributes="href link">
                            <tal:bg-image tal:condition="python: hasImage or hasTileImage">
@@ -193,6 +201,7 @@
                                                 image_scaled python: scales.scale(imageField, width = 360, height = 200, direction = 'down');
                                                 url image_scaled/url|nothing"
                                     tal:attributes="style string: background-image:url('${url}');">
+                                    <div class="alternative-text" role="img" aria-label="alternative text" tal:attributes="aria-label alt"></div>
                                     <div class="copyright"
                                          tal:condition="copyright"
                                          tal:content="copyright" />
@@ -205,15 +214,15 @@
                        </a>
                    </div>
                    <div tal:omit-tag="color" class="tile-end"></div>
-                </div>                
+                </div>
             </div>
         </tal:block>
-        
+
         <ol class="carousel-indicators" tal:condition="python: tilePageDepth == 0 and len(siblings) > 0">
             <tal:repeat tal:repeat="tilePage siblings">
                 <li tal:define="tileObj python: tilePage.getObject();
                           tileColor python: tileObj.color != None and tileObj.color or view.parentColor();
-                          
+
                           link python: tileObj.absolute_url()"
                     tal:attributes="class python: tileObj.UID == context.UID and 'active' or None">
                     <a tal:attributes="href link" tal:content="repeat/tilePage/number">Number</a>
@@ -221,7 +230,7 @@
             </tal:repeat>
         </ol>
 
-        
+
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
 

@@ -14,7 +14,9 @@
     </ul>
 
     <div id="footer-copyright">
-        <div><a href="https://tu-dresden.de/mz" target="_blank">&copy; TUD, 2016</a></div>
+        <div>
+          <a href="https://tu-dresden.de/mz" target="_blank">&copy; TUD, <tal:year replace="view/shown_year">2016</tal:year></a>
+        </div>
         <div class="life-url">
             <a class="life_logo" href="http://ec.europa.eu/environment/life/" target="_blank" class="nohover">
                 <img src="life.png" tal:attributes="src string:${context/@@plone_portal_state/portal_url}/++theme++tud.portal.lla/img/life.png" i18n:attributes="alt footer_life_logo_alt" alt="Environment LIFE Programme Logo"/>
